@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Notepad</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            #notepad {
+                font-family: 'Source Sans Pro', sans-serif;
+                padding: 12px;
+                width: 100vw;
+                height: 100vh;
+                border: none;
+                line-height: 120%;
+                font-size: 18px;
+            }
+        </style>
+    </head>  
+    <body>
+        <textarea 
+            id="notepad"
+            placeholder="Keep notes here. They will be saved until you clear your browsing data."
+            autofocus
+        ></textarea>
+    </body>
+    <script>
+        const notepad = document.getElementById("notepad");
+        notepad.value = localStorage.getItem('notepad') || '';
+        notepad.addEventListener('input', (e) => localStorage.setItem('notepad', e.target.value));
+    </script>
+</html>
